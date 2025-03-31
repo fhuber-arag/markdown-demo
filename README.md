@@ -1,3 +1,8 @@
+[ToC]
+
+# To Do Liste
+- [ ] Abbreviation Syntax bei GitHub testen
+
 # Out of the Box
 Visual Studio Code bietet Out of the Box eine gute Unterstützung für Markdown, sowohl Syntaxhighlighting für `.md` Dateien, als auch Rendering für eine Vorschau.
 
@@ -9,6 +14,8 @@ Um die Markdown Vorschau anzuzeigen, kann die Tastenkombination
 verwendet werden, oder über die Kommando-Palette:
 
     > Markdown: Open Preview
+
+# Markdown
 
 ## Codeblöcke
 
@@ -33,9 +40,32 @@ Nummerierte Listen
 3. Welt
 3. Die Nummerierung muss nichtmal stimmen :facepalm:
 
+## Tabellen
+
+| Spalte 1    | Spalte 2 | Spalte 3      |
+|:------------|:---------:|-------------:|
+| Hallo       | Welt      | 42           |
+| Foo         | Bar       | 1337         |
+| Linksbündig | Zentriert | Rechtsbündig |
+
+## Definitionslisten
+Term
+
+: Definition
+
+: { for(int i = 0; i < 100; i++) printf("Hallo\n");}
+
+
 # Erweiterungen
 
 ## Diagramme
+Es gibt drei verbreitete Möglichkeiten, Diagramme in Markdown einzubinden:
+
+- [Mermaid](https://mermaid.js.org/)
+- [PlantUml](https://plantuml.com/de/)
+- [Graphviz](https://graphviz.org/)
+
+Mermaid bietet die breiteste Unterstützung, z.B. durch GitHub.
 
 ### Mermaid
 Extension: [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
@@ -236,7 +266,9 @@ pie title Pets adopted by volunteers
 ```
 
 #### C4 Diagramm
+
 [Dokumentation](https://mermaid.js.org/syntax/c4.html)
+
 [C4 Website](https://c4model.com/)
 
 ```mermaid
