@@ -48,12 +48,10 @@ Nummerierte Listen
 | Foo         | Bar       | 1337         |
 | Linksbündig | Zentriert | Rechtsbündig |
 
-## Definitionslisten
-Term
+## Abkürzungen
+*[Beispiel]: Mal sehen, ob das funktioniert :+1:
 
-: Definition
-
-: { for(int i = 0; i < 100; i++) printf("Hallo\n");}
+Ein Beispiel.
 
 
 # Erweiterungen
