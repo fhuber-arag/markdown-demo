@@ -1,7 +1,7 @@
 [ToC]
 
 # To Do Liste
-- [ ] Abbreviation Syntax bei GitHub testen
+- [x] Abbreviation Syntax bei GitHub testen -> Funktioniert nicht
 
 # Out of the Box
 Visual Studio Code bietet Out of the Box eine gute Unterstützung für Markdown, sowohl Syntaxhighlighting für `.md` Dateien, als auch Rendering für eine Vorschau.
@@ -16,6 +16,18 @@ verwendet werden, oder über die Kommando-Palette:
     > Markdown: Open Preview
 
 # Markdown
+
+Feature Übersicht:
+
+| Feature     | VS Code            | Joplin             | HedgeDoc | GitHub             | BitBucket |
+|------------:|:------------------:|:------------------:|:--------:|:------------------:|:----------:|
+| Mermaid     | :white_check_mark: | :white_check_mark: |          | :white_check_mark: | :question: |
+| PlantUml    | :white_check_mark: | :package:          |          |                    |            |
+| Graphviz    | :package:          | :x:                |          |                    |            |
+| Abkürzungen | :x:                | :white_check_mark: |          |                    |            |
+| Emojis      | :package:          |                    |          |                    |            |
+| Fußnoten    | :package:          |                    |          |                    |            |
+| Checkboxen  | :package:          |                    |          |                    |            |
 
 ## Codeblöcke
 
