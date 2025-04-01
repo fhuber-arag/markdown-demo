@@ -2,6 +2,10 @@
 
 # To Do Liste
 - [x] Abbreviation Syntax bei GitHub testen -> Funktioniert nicht
+- [ ] Abschnitt über Multimarkdown (`.mmd`)
+- [ ] Heading IDs testen
+- [ ] Erweiterungen für Tabellen testen
+- [ ] Abschnitt über Verlinkungen
 
 # Out of the Box
 Visual Studio Code bietet Out of the Box eine gute Unterstützung für Markdown, sowohl Syntaxhighlighting für `.md` Dateien, als auch Rendering für eine Vorschau.
@@ -11,27 +15,31 @@ Um die Markdown Vorschau anzuzeigen, kann die Tastenkombination
 
     [Ctrl]-[K], V
 
-verwendet werden, oder über die Kommando-Palette:
+verwendet werden, oder über die Kommando-Palette (`[Strg]-[Shift]-[P]`)
 
     > Markdown: Open Preview
 
 # Markdown
 
-Feature Übersicht:
+## Feature Übersicht
 
-| Feature     | VS Code            | Joplin             | HedgeDoc | GitHub             | BitBucket |
-|------------:|:------------------:|:------------------:|:--------:|:------------------:|:----------:|
-| Mermaid     | :white_check_mark: | :white_check_mark: |          | :white_check_mark: | :question: |
-| PlantUml    | :white_check_mark: | :package:          |          |                    |            |
-| Graphviz    | :package:          | :x:                |          |                    |            |
-| Abkürzungen | :x:                | :white_check_mark: |          |                    |            |
-| Emojis      | :package:          |                    |          |                    |            |
-| Fußnoten    | :package:          |                    |          |                    |            |
-| Checkboxen  | :package:          |                    |          |                    |            |
+| Feature                     | VS Code            | Joplin                 | HedgeDoc                  | GitHub             | BitBucket  |
+|----------------------------:|:-------------------|:-----------------------|:--------------------------|:-------------------|:-----------|
+| [Mermaid](#mermaid)         | :white_check_mark: | :white_check_mark:     | :white_check_mark:[^hdmm] | :white_check_mark: | :question: |
+| [PlantUml](#plantuml)       | :white_check_mark: | :package:              | :x:                       |                    |            |
+| [Graphviz](#graphviz)       | :package:          | :x:                    | :white_check_mark:        |                    |            |
+| [Abkürzungen](#abkürzungen) | :x:                | :white_check_mark:[^1] | :white_check_mark:        |                    |            |
+| [Emojis](#emojis)           | :package:          | :white_check_mark:[^1] | :white_check_mark:        |                    |            |
+| [Fußnoten](#fußnoten)       | :package:[^vsfn]   | :white_check_mark:[^1] | :white_check_mark:        |                    |            |
+| [Checkboxen](#checklisten)  | :package:          | :white_check_mark:[^1] | :white_check_mark:        |                    |            |
+
+[^hdmm]: Version 9.1.7, ziemlich veraltet. Aktuell ist 11.6
+[^vsfn]: Sehen seltsam aus
+[^1]: Muss aktiviert werden
 
 ## Codeblöcke
 
-```cpp
+```cpp=
 class Foo
 {
 
@@ -350,7 +358,7 @@ stop
 @enduml
 ```
 
-#### Test
+#### Klassendiagramm
 ```plantuml
 @startuml
 skinparam classAttributeIconSize 0
@@ -363,6 +371,10 @@ class Dummy {
 
 @enduml
 ```
+
+#### Bewertung
+- Veraltete Optik, etwas klobig und relativ schlechte Tool-Unterstützung
+- Beste Klassendiagramme (Subjektiv?)
 
 ### Graphviz
 ```graphviz
