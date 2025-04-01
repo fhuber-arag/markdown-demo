@@ -63,12 +63,11 @@ Standard Markdown unterstützt die folgenden Formatierungen:
 
 Darüber hinaus bieten verschiedene Tools weitergehende Möglichkeiten an:
 
-| Schreibweise                     | Formatierung                   | Unterstützt durch |
-|----------------------------------|--------------------------------|-------------------|
-| `<font color="red">Farbe</font>` | <font color="red">Farbe</font> | VS Code, Joplin, HedgeDoc, BitBucket :question:
-| `<ins>unterstrichne</ins>`       | <ins>Unterstrichen</ins>       | VS Code, GitHub, BitBucket, Joplin, HedgeDoc
-| `<marquee>lol</marquee>`         | <marquee>lol</marquee>         | VS Code, Joplin, :question:
-
+| Schreibweise                     | Formatierung                   | Unterstützt durch                            |
+|----------------------------------|--------------------------------|----------------------------------------------|
+| `<font color="red">Farbe</font>` | <font color="red">Farbe</font> | VS Code, Joplin, HedgeDoc, BitBucket         |
+| `<ins>unterstrichne</ins>`       | <ins>Unterstrichen</ins>       | VS Code, GitHub, BitBucket, Joplin, HedgeDoc |
+| `<marquee>lol</marquee>`         | <marquee>lol</marquee>         | VS Code, Joplin                              |
 
 ## Codeblöcke
 
@@ -514,7 +513,9 @@ Extension: [Markdown Preview Mermaid Support](https://marketplace.visualstudio.c
 
 [:link: Joplin Markdown Guide](https://joplinapp.org/help/apps/markdown/)
 
-## HedgeDoc
+## HedgeDoc :hedgehog:
+
+[:link: HedgeDoc](https://hedgedoc.org/) ist ein Server für kollaborative Dokumentation mit Markdown. Es ist ein OpenSource Projekt und muss aktuell selbst gehostet werden.
 
 ## GitHub
 
@@ -525,6 +526,9 @@ Extension: [Markdown Preview Mermaid Support](https://marketplace.visualstudio.c
 ## BitBucket
 
 [:link: BitBucket Markdown Tutorial](https://bitbucket.org/tutorials/markdowndemo/src/master/)
+
+## Structurizr
+[:link: Hennings Structurizr Server](https://c4.nitschke.dyndns.org/dashboard?continue)
 
 ## Pandoc
 
@@ -548,3 +552,84 @@ Interessante Ausgabeformate sind u.a.:
 - `pptx` (PowerPoint)
 
 Für eine vollständige Liste der Formate, s. `-t FORMAT` in [Pandoc Options](https://pandoc.org/MANUAL.html#options).
+
+# Architektur-Dokumentation
+
+## UML
+
+UML ist eine sehr formale Sprache, mit der ein System bis ins kleinste Detail spezifiziert werden kann^[Bis hin zur Variante SysML, mit der auch physische Interaktionen im Nanosekunden und Mikrogrammbereich spezifiziert werden]. Die Diagramme, die dabei herauskommen, sind in den allermeisten Fällen überfrachtet und fast unbenutzbar - dazu ein Negativbeispiel:
+
+![Negativbeispiel](https://www.uml-diagrams.org/examples/class-example-dicom-app-hosting-api.png)
+
+Dies ist sinnvoll beim Klassischen Wasserfall- oder Spiralmodell und bei Projekten, bei denen viele Akteure im Vorfeld genauestens abstimmen müssen, was genau geliefert werden muss (Stichwort: Lastenheft). Für agile Projekte bieten sich andere Ansätze an, die mehr "light weight" sind.
+
+## C4
+
+[:link::movie_camera: Einführendes Video des Erfinders (🇬🇧 Englisch)](https://www.youtube.com/watch?v=x2-rSnhpw0g)
+
+Das C4 Modell organisiert die Sicht auf eine Softwarearchitektur auf vier Ebenen, die von einer High-Level Übersicht (Ebene 1) bis hin zur Code-Ebene (Ebene 4) sukkzessive in die Architektur "hinein zoomen".
+
+
+| Ebene | Sichtweise | Erklärung                                                | Analogie |
+|------:|------------|----------------------------------------------------------|------------------------------|
+| 1     | Context    | Grobe Sicht auf das System. Mit welchen anderen System arbeiten wir zusammen (Datenbanken, REST Dienstem ...)? | :earth_africa: Weltkarte |
+| 2     | Containers | Zeigt die Bestandteile eines Systems (In C4 "Container" genannt). Beispiele sind Desktop Applikationen, SPAs, REST Dienste, etc. | :city_sunrise: Stadt
+| 3     | Components | Zeigt Komponenten eines einzelnen Containers. Dies sind **High-Level** Abstraktionen, auf keinen Fall Klassen und Funktionen! Beispiele: "Login Controller", "Todo Item Data Source". | :house_with_garden: Stadtteil |
+| 4     | Code       | Detailierteste Ebene, einzelne Klassen, Funktionen etc. | :microscope: Straße |
+
+:exclamation: Der Erfinder von C4 rät ausdrücklich davon ab, sich auf Ebene 4 zu bewegen, außer es ist unbedingt erforderlich.
+
+- [Mermaid](https://mermaid.js.org/syntax/c4.html) bietet gute Unterstützung für (statische) C4 Diagramme
+- [Structurizr](https://structurizr.com) ist eine interaktive Lösung, bei der Diagramme auch verknüpft werden können. Das ermöglicht die Navigation in der Architektur. Außerdem werden Animationen angeboten, mit denen sich bestimmte Sachverhalte Stück für Stück erklären lassen
+
+### Mermaid
+
+Context Diagramm
+
+```mermaid
+ C4Context
+  title Neuer VSK Client (Components)
+  
+  %% Personen
+  Person(vskUser, "Benutzer", "Benutzer des VSK Systems, z.B. Sachbearbeiter")
+
+  %% Systeme
+  System(sysWebApp, "Angular Web Application", "")
+  System(sysProxy, "Proxy", "Proxy Dienst. Dollmetscher zwischen Backend und WebApp")
+  System(sysBackend, "vgstmain", "Vorgangssteuerung. Alles wie bisher")
+  System(sysDatabase, "DB", "Die gute alte Datenbank")
+
+  %% Beziehungen zwischen Benutzern und Systemen
+  BiRel(vskUser, sysWebApp, "")  
+  BiRel(sysWebApp, sysProxy, "")
+  BiRel(sysProxy, sysBackend, "")
+  BiRel(sysBackend, sysDatabase, "")
+
+  UpdateLayoutConfig($c4ShapeInRow="2", $c4BoundaryInRow="1")
+```
+
+Container Diagramm
+
+```mermaid
+C4Container
+  title Container Diagramm für Angular Web Application
+  
+  %% Externes System
+  System_Ext(sysProxy, "Proxy", "Java")
+  
+  %% Person
+  Person(user, "Sachbearbeiter")
+  
+  %%ContainerDb_Ext(database, "DB2") 
+
+  Container_Boundary(contAngular, "Angular Web Application") {
+    Container(contVskComponents, "VSK Components", "TypeScript", "Wiederverwendbare Steuerelemente")
+    Container(web_app, "Web Application", "Java, Spring MVC", "Delivers the static content and the Internet banking SPA")  
+  }
+
+  Rel(user, web_app, "Aufruf im Browser")
+  Rel(web_app, contVskComponents, "Verwendet")
+  Rel(web_app, sysProxy, "Datenaustausch im JSON Format")
+```
+
+### Structurizr
