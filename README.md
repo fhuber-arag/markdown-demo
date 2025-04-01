@@ -1,3 +1,5 @@
+# Präsentation Dokumentations Tools
+
 [ToC]
 
 # To Do Liste
@@ -6,45 +8,88 @@
 - [ ] Heading IDs testen
 - [ ] Erweiterungen für Tabellen testen
 - [ ] Abschnitt über Verlinkungen
+- [x] Konvertierungs Tools (Pandoc)
+- [ ] Kurzvorstellung C4 
+- [ ] Abschnitt über Structurizr @Henning
+- [ ] Wort zum Sonntag zum Thema SharePoint :skull:
 
-# Out of the Box
-Visual Studio Code bietet Out of the Box eine gute Unterstützung für Markdown, sowohl Syntaxhighlighting für `.md` Dateien, als auch Rendering für eine Vorschau.
-
-## Vorschau anzeigen
-Um die Markdown Vorschau anzuzeigen, kann die Tastenkombination
-
-    [Ctrl]-[K], V
-
-verwendet werden, oder über die Kommando-Palette (`[Strg]-[Shift]-[P]`)
-
-    > Markdown: Open Preview
 
 # Markdown
 
+Markdown ist ein Format um strukturierte und formatierte Texte zu verfassen. Markdown Dateien (`.md`) sind einfache Textdateien, die mit jedem Texteditor bearbeitet werden können. Ziel des Erfinders der Sprache war es, ein Textformat zu schaffen, das sowohl einfach zu schreiben, als auch einfach zu lesen ist^[https://en.wikipedia.org/wiki/Markdown#History].
+
 ## Feature Übersicht
 
-| Feature                     | VS Code            | Joplin                 | HedgeDoc                  | GitHub             | BitBucket  |
-|----------------------------:|:-------------------|:-----------------------|:--------------------------|:-------------------|:-----------|
-| [Mermaid](#mermaid)         | :white_check_mark: | :white_check_mark:     | :white_check_mark:[^hdmm] | :white_check_mark: | :question: |
-| [PlantUml](#plantuml)       | :white_check_mark: | :package:              | :x:                       |                    |            |
-| [Graphviz](#graphviz)       | :package:          | :x:                    | :white_check_mark:        |                    |            |
-| [Abkürzungen](#abkürzungen) | :x:                | :white_check_mark:[^1] | :white_check_mark:        |                    |            |
-| [Emojis](#emojis)           | :package:          | :white_check_mark:[^1] | :white_check_mark:        |                    |            |
-| [Fußnoten](#fußnoten)       | :package:[^vsfn]   | :white_check_mark:[^1] | :white_check_mark:        |                    |            |
-| [Checkboxen](#checklisten)  | :package:          | :white_check_mark:[^1] | :white_check_mark:        |                    |            |
+| Feature                     | VS Code            | Joplin                 | [HedgeDoc](https://demo.hedgedoc.org/features) | [GitHub](https://github.com/fhuber-arag/markdown-demo)             | [BitBucket](https://bitbucket.arag.com/users/a503111/repos/markdown-test) |
+|----------------------------:|:-------------------|:-----------------------|:--------------------------|:-------------------|:-------------------|
+| [Mermaid](#mermaid)         | :white_check_mark: | :white_check_mark:     | :white_check_mark:[^hdmm] | :white_check_mark: | :x:                |
+| [PlantUml](#plantuml)       | :white_check_mark: | :package:              | :x:                       | :x:                | :x:                |
+| [Graphviz](#graphviz)       | :package:          | :x:                    | :white_check_mark:        | :x:                | :x:                |
+| [Abkürzungen](#abkürzungen) | :x:                | :white_check_mark:[^1] | :white_check_mark:        | :x:                | :x:                |
+| [Emojis](#emojis)           | :package:          | :white_check_mark:[^1] | :white_check_mark:        | :white_check_mark: | :hankey:           |
+| [Fußnoten](#fußnoten)       | :package:[^vsfn]   | :white_check_mark:[^1] | :white_check_mark:        | :white_check_mark: | :x:                |
+| [Checkboxen](#checklisten)  | :package:          | :white_check_mark:[^1] | :white_check_mark:        | :white_check_mark: | :x:                |
+| [Zitate](#zitate)           | :white_check_mark: | :white_check_mark:     | :white_check_mark::+1:    | :white_check_mark: | :white_check_mark: |
 
 [^hdmm]: Version 9.1.7, ziemlich veraltet. Aktuell ist 11.6
 [^vsfn]: Sehen seltsam aus
 [^1]: Muss aktiviert werden
 
+## Überschriften
+
+Eine Überschrift wird durch ein oder mehrere Rautezeichen `#` eingeleitet. Die Anzahl der Rauten entspricht dabei der Überschrifen-Ebene, wobei bis zu 6 Ebenen unterstütz werden.
+
+```
+# Überschrift 1
+## Überschrift 2
+### Überschrift 3
+#### Überschrift 4
+##### Überschrift 5
+###### Überschrift 6
+```
+
+Viele Tools erstellen aus den Überschriften automatisch Inhaltsverzeichnisse und Navigationsleisten, so dass sich Überschriften hervorragend eignen, ein Markdown Dokument zu strukturieren.
+
+## Textformatierung
+
+Standard Markdown unterstützt die folgenden Formatierungen:
+
+| Schreibweise          | Formatierung        |
+|-----------------------|---------------------|
+| `*kursiv*`            | *kursiv*            |
+| `**fett**`            | **fett**            |
+| `***beides***`        | ***beides***        |
+| `~~durchgestrichen~~` | ~~durchgestrichen~~ |
+
+Darüber hinaus bieten verschiedene Tools weitergehende Möglichkeiten an:
+
+| Schreibweise                     | Formatierung                   | Unterstützt durch |
+|----------------------------------|--------------------------------|-------------------|
+| `<font color="red">Farbe</font>` | <font color="red">Farbe</font> | VS Code, Joplin, HedgeDoc, BitBucket :question:
+| `<ins>unterstrichne</ins>`       | <ins>Unterstrichen</ins>       | VS Code, GitHub, BitBucket, Joplin, HedgeDoc
+| `<marquee>lol</marquee>`         | <marquee>lol</marquee>         | VS Code, Joplin, :question:
+
+
 ## Codeblöcke
 
-```cpp=
+Ein Codeblock wird durch drei Backticks `` ` `` (Accent Grave) oder drei Tilden `~` eingeleitet:
+
+~~~cpp
 class Foo
 {
 
 };
-```
+~~~
+
+Die Schreibweise mit Tilde kann manchmal notwendig sein, wenn bestimmte externe Programme verwendet werden.
+
+Die meisten Markdown Renderer versuchen die Sprache automatisch zu erkennen; besser ist es jedoch, die Sprache explizit hinter dem dritten Backtick anzugeben (Visual Studio Code bietet innerhalb des Code
+Blocks nur Syntax Highlighting an, wenn die Sprache explizit genannt wird).
+
+Eine Liste verfügbarer Sprachen siehe [hier](https://docs.readme.com/rdmd/docs/code-blocks#language-support) oder die [Linguist Dokumentation](https://github.com/github-linguist/linguist/blob/main/lib/linguist/languages.yml).
+
+## Inline Code
+Codeschnipsel wie Funktionsnamen, aber auch Dateipfade, können im Fließtext mit einfach Backticks eingefasst werden; das sieht dann so aus: `int main(int, char**)`. **Hinweis**: Einfache Tilde funktioniert leider nicht.
 
 ## Listen
 Ungeordnete Listen
@@ -73,10 +118,17 @@ Nummerierte Listen
 
 Ein Beispiel.
 
+## Zitate
 
-# Erweiterungen
+> Dies ist ein zitat
+> > Dies ist ein Unterzitat.
+> > Für den Fall, dass man mal eine ausgedehnte Email Korrespondenz in Markdown abbilden muss :rofl:
 
-## Diagramme
+[HedgeDoc](https://demo.hedgedoc.org/features?both#Blockquote-Tags) bietet den Besten Support für Zitate an. Es werden Quellen- und Zeitangaben sowie Farben unterstützt.
+
+## Erweitertes Markdown
+
+### Diagramme
 Es gibt drei verbreitete Möglichkeiten, Diagramme in Markdown einzubinden:
 
 - [Mermaid](https://mermaid.js.org/)
@@ -85,10 +137,9 @@ Es gibt drei verbreitete Möglichkeiten, Diagramme in Markdown einzubinden:
 
 Mermaid bietet die breiteste Unterstützung, z.B. durch GitHub.
 
-### Mermaid
-Extension: [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
+#### Mermaid
 
-#### Entity Relationship Diagramm
+##### Entity Relationship Diagramm
 [Dokumentation](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
 
 ```mermaid
@@ -101,7 +152,7 @@ erDiagram
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
-#### State Machine
+##### State Machine
 [Dokumentation](https://mermaid.js.org/syntax/stateDiagram.html)
 
 ```mermaid
@@ -118,7 +169,7 @@ stateDiagram-v2
     Crash --> [*]
 ```
 
-#### Architektur
+##### Architektur
 [Dokumentation](https://mermaid.js.org/syntax/architecture.html)
 
 ```mermaid
@@ -135,7 +186,7 @@ architecture-beta
     disk2:T -- B:db
 ```
 
-#### Mind Map
+##### Mind Map
 [Dokumentation](https://mermaid.js.org/syntax/mindmap.html)
 
 ```mermaid
@@ -159,7 +210,7 @@ mindmap
 
 ```
 
-#### Block Diagramm
+##### Block Diagramm
 [Dokumentation](https://mermaid.js.org/syntax/block.html)
 
 ```mermaid
@@ -179,7 +230,7 @@ columns 1
   style B fill:#939,stroke:#333,stroke-width:4px
 ```
 
-#### Klassendiagramm
+##### Klassendiagramm
 [Dokumentation](https://mermaid.js.org/syntax/classDiagram.html)
 
 ```mermaid
@@ -211,7 +262,7 @@ classDiagram
     }
 ```
 
-#### Git Graph
+##### Git Graph
 [Dokumentation](https://mermaid.js.org/syntax/gitgraph.html)
 
 ```mermaid
@@ -231,7 +282,7 @@ gitGraph
    commit
 ```
 
-#### Gantt
+##### Gantt
 [Dokumentation](https://mermaid.js.org/syntax/gantt.html)
 
 ```mermaid
@@ -246,7 +297,7 @@ gantt
         another task    :24d
 ```
 
-#### User Journey
+##### User Journey
 [Dokumentation](https://mermaid.js.org/syntax/userJourney.html)
 
 ```mermaid
@@ -261,7 +312,7 @@ journey
       Sit down: 5: Me
 ```
 
-#### Flow Chart
+##### Flow Chart
 [Dokumentation](https://mermaid.js.org/syntax/flowchart.html)
 
 ```mermaid
@@ -273,7 +324,7 @@ flowchart TD
     B ---->|No| E[End]
 ```
 
-#### Tortendiagramm
+##### Tortendiagramm
 [Dokumentation](https://mermaid.js.org/syntax/pie.html)
 
 ```mermaid
@@ -283,7 +334,7 @@ pie title Pets adopted by volunteers
     "Rats" : 15
 ```
 
-#### C4 Diagramm
+##### C4 Diagramm
 
 [Dokumentation](https://mermaid.js.org/syntax/c4.html)
 
@@ -334,12 +385,12 @@ pie title Pets adopted by volunteers
       UpdateLayoutConfig($c4ShapeInRow="3", $c4BoundaryInRow="1")
 ```
 
-### PlantUml
+#### PlantUml
 Extension: [Markdown Plantuml Preview](https://marketplace.visualstudio.com/items?itemName=myml.vscode-markdown-plantuml-preview)
 
 [:link: PlantUml Website](https://plantuml.com/de/)
 
-#### Sequenz Diagramm
+##### Sequenz Diagramm
 
 ```plantuml
 @startuml
@@ -358,7 +409,7 @@ stop
 @enduml
 ```
 
-#### Klassendiagramm
+##### Klassendiagramm
 ```plantuml
 @startuml
 skinparam classAttributeIconSize 0
@@ -372,11 +423,11 @@ class Dummy {
 @enduml
 ```
 
-#### Bewertung
+##### Bewertung
 - Veraltete Optik, etwas klobig und relativ schlechte Tool-Unterstützung
 - Beste Klassendiagramme (Subjektiv?)
 
-### Graphviz
+#### Graphviz
 ```graphviz
 digraph finite_state_machine {
     rankdir=LR;
@@ -396,19 +447,104 @@ digraph finite_state_machine {
 }
 ```
 
-## Emojis
+### Emojis
 Extension: [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
 
 :+1: :x: :exploding_head:
 
-## Fußnoten
+### Fußnoten
 Extension: [Markdown Footnotes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-footnotes)
 
 Fußnoten wie diese^[Test] können ebenfalls eingefügt werden.
 
-## Checklisten
+Es gibt zwei leicht unterschiedliche Syntaxen für Fußnoten. Die erste fügt die Fußnote an Ort und Stelle ein:
+
+```markdown
+Dieser Satz hat eine Fußnote^[Und dieser Text wird unten angezeigt]
+```
+
+Bei der zweiten Schreibweise sind Verwendung und Definition der Fußnote getrennt (:exclamation: Vorsicht: Das Zirkumflex steht hier **in** dem eckigen Klammerpaar!):
+
+```markdown
+Dieser Satz hat ebenfalls eine Fußnote[^ref_footnote_1].
+
+[^ref_footnote_1]: Und dieser Text wird unten angezeigt. Er kann darüber hin aus viel länger sein und mehrmals verwendet werden
+```
+
+Beispiel für eine sehr lange Fußnote[^ref_long_footnote].
+
+[^ref_long_footnote]:
+    Wer reitet so spät durch Nacht und Wind?
+
+    Es ist der Vater mit seinem Kind;
+
+    Er hat den Knaben wohn in dem Arm,
+
+    Er faβt ihn sicher, er hält ihn warm.
+
+
+
+### Checklisten
 Extension: [Markdown Checkboxes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-checkbox)
 
 - [ ] Punkt 1
 - [ ] Punkt 2
 
+# Tools
+
+## Visual Studio Code
+
+### Out of the Box
+Visual Studio Code bietet Out of the Box eine gute Unterstützung für Markdown, sowohl Syntaxhighlighting für `.md` Dateien, als auch Rendering für eine Vorschau.
+
+### Vorschau anzeigen
+Um die Markdown Vorschau anzuzeigen, kann die Tastenkombination
+
+    [Ctrl]-[K], V
+
+verwendet werden, oder über die Kommando-Palette (`[Strg]-[Shift]-[P]`)
+
+    > Markdown: Open Preview
+
+### Erweiterungen
+
+Extension: [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
+
+## Joplin
+
+[:link: Joplin Markdown Guide](https://joplinapp.org/help/apps/markdown/)
+
+## HedgeDoc
+
+## GitHub
+
+[:link: Writing on GitHub](https://docs.github.com/en/get-started/writing-on-github)
+
+[:link: GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+
+## BitBucket
+
+[:link: BitBucket Markdown Tutorial](https://bitbucket.org/tutorials/markdowndemo/src/master/)
+
+## Pandoc
+
+[Pandoc](https://pandoc.org/) ist ein Konsolenbasiertes Werkzeug, mit dem eine große Zahl von Textformaten ineinander konvertiert werden können, unter anderem Markdown.
+
+Die Konvertierung kann wie folgt angestoßen werden:
+
+```bash
+pandoc README.md -o README.pdf
+```
+
+Die Option `-o` spezifiziert die zu erstellende Datei; das Ausgabeformat wird anhand der Dateiendung erkannt, kann aber auch mit der Option `-t` explizit angegeben werden (s.u.).
+
+Interessante Ausgabeformate sind u.a.:
+- `docx`(Word)
+- `pdf` (PDF)
+- `html` (HTML5)
+- `latex` (LaTeX)
+- `epub` (EPUB v3)
+- `opendocument` (OpenOffice Dokument)
+- `pptx` (PowerPoint)
+
+Für eine vollständige Liste der Formate, s. `-t FORMAT` in [Pandoc Options](https://pandoc.org/MANUAL.html#options).
