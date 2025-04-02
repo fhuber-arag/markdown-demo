@@ -4,7 +4,9 @@
 
 # Markdown
 
-Markdown ist ein Format um strukturierte und formatierte Texte zu verfassen. Markdown Dateien (`.md`) sind einfache Textdateien, die mit jedem Texteditor bearbeitet werden können. Ziel des Erfinders der Sprache war es, ein Textformat zu schaffen, das sowohl einfach zu schreiben, als auch einfach zu lesen ist^[https://en.wikipedia.org/wiki/Markdown#History].
+Markdown ist ein Format um strukturierte und formatierte Texte zu verfassen. Markdown Dateien (`.md`) sind einfache Textdateien, die mit jedem Texteditor bearbeitet werden können. Ziel des Erfinders der Sprache war es, ein Textformat zu schaffen, das sowohl einfach zu schreiben, als auch einfach zu lesen ist[^mdhistory].
+
+[^mdhistory]: [Wikipedia: Markdown History](https://en.wikipedia.org/wiki/Markdown#History).
 
 ## Feature Übersicht
 
