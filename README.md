@@ -1,28 +1,14 @@
-# Präsentation Dokumentations Tools
+# Dokumentations Tools
 
 [ToC]
-
-# To Do Liste
-- [x] Abbreviation Syntax bei GitHub testen -> Funktioniert nicht
-- [x] Abschnitt über Multimarkdown (`.mmd`) :x:
-- [ ] Heading IDs testen
-- [ ] Erweiterungen für Tabellen testen
-- [ ] Abschnitt über Verlinkungen
-- [x] Konvertierungs Tools (Pandoc)
-- [x] Kurzvorstellung C4 
-- [x] Abschnitt über Structurizr @Henning
-- [ ] Wort zum Sonntag zum Thema SharePoint :skull:
-- [ ] Beispiel für gute `README.md`s
-- [ ] Code Dokumentation
-  - Doxygen
-  - Javadoc
-  - TypeScript ???
 
 # Markdown
 
 Markdown ist ein Format um strukturierte und formatierte Texte zu verfassen. Markdown Dateien (`.md`) sind einfache Textdateien, die mit jedem Texteditor bearbeitet werden können. Ziel des Erfinders der Sprache war es, ein Textformat zu schaffen, das sowohl einfach zu schreiben, als auch einfach zu lesen ist^[https://en.wikipedia.org/wiki/Markdown#History].
 
 ## Feature Übersicht
+
+:bulb: Nicht erschrecken, wir gehen in Ruhe auf jedes Feature ein :D
 
 | Feature                     | VS Code            | Joplin                 | [HedgeDoc](https://demo.hedgedoc.org/features) | [GitHub](https://github.com/fhuber-arag/markdown-demo)             | [BitBucket](https://bitbucket.arag.com/users/a503111/repos/markdown-test) |
 |----------------------------:|:-------------------|:-----------------------|:--------------------------|:-------------------|:-------------------|
@@ -133,6 +119,47 @@ Ein Beispiel.
 [HedgeDoc](https://demo.hedgedoc.org/features?both#Blockquote-Tags) bietet den Besten Support für Zitate an. Es werden Quellen- und Zeitangaben sowie Farben unterstützt.
 
 ## Erweitertes Markdown
+
+### Emojis
+Extension: [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
+
+:+1: :x: :exploding_head:
+
+### Fußnoten
+Extension: [Markdown Footnotes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-footnotes)
+
+Fußnoten wie diese^[Test] können ebenfalls eingefügt werden.
+
+Es gibt zwei leicht unterschiedliche Syntaxen für Fußnoten. Die erste fügt die Fußnote an Ort und Stelle ein:
+
+```markdown
+Dieser Satz hat eine Fußnote^[Und dieser Text wird unten angezeigt]
+```
+
+Bei der zweiten Schreibweise sind Verwendung und Definition der Fußnote getrennt (:exclamation: Vorsicht: Das Zirkumflex steht hier **in** dem eckigen Klammerpaar!):
+
+```markdown
+Dieser Satz hat ebenfalls eine Fußnote[^ref_footnote_1].
+
+[^ref_footnote_1]: Und dieser Text wird unten angezeigt. Er kann darüber hin aus viel länger sein und mehrmals verwendet werden
+```
+
+Beispiel für eine sehr lange Fußnote[^ref_long_footnote].
+
+[^ref_long_footnote]:
+    Wer reitet so spät durch Nacht und Wind?
+
+    Es ist der Vater mit seinem Kind;
+
+    Er hat den Knaben wohn in dem Arm,
+
+    Er faβt ihn sicher, er hält ihn warm.
+
+### Checklisten
+Extension: [Markdown Checkboxes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-checkbox)
+
+- [ ] Punkt 1
+- [ ] Punkt 2
 
 ### Diagramme
 Es gibt drei verbreitete Möglichkeiten, Diagramme in Markdown einzubinden:
@@ -453,48 +480,31 @@ digraph finite_state_machine {
 }
 ```
 
-### Emojis
-Extension: [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
+# Bedeutung der Datei README.md
 
-:+1: :x: :exploding_head:
+Ist in einem GitHub oder Bitbucket Repository eine Datei `README.md` vorhanden, wird sie im Browser unterhalb der Quelldateien Verzeichnisses gerendert.
 
-### Fußnoten
-Extension: [Markdown Footnotes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-footnotes)
+Eine gute `README.md` sollte beinhalten:
 
-Fußnoten wie diese^[Test] können ebenfalls eingefügt werden.
+- Kurze Beschreibung des Projekts in ein, zwei Sätzen
+- Schritte zum selber Bauen (inklusive Abhängigkeiten)
+- Wie wird die Entwicklungsumgebung eingerichtet?
+- Wie kann ich beitragen?
+- Kontakt zu anderen Entwicklern (Foren, Discord, etc)
 
-Es gibt zwei leicht unterschiedliche Syntaxen für Fußnoten. Die erste fügt die Fußnote an Ort und Stelle ein:
+Oft auch enthalten sind:
 
-```markdown
-Dieser Satz hat eine Fußnote^[Und dieser Text wird unten angezeigt]
-```
+- Code of Conduct
+- CI/CD Status
+- Achkowledgements / Hall of Fame
+- Lizenzinformationen
 
-Bei der zweiten Schreibweise sind Verwendung und Definition der Fußnote getrennt (:exclamation: Vorsicht: Das Zirkumflex steht hier **in** dem eckigen Klammerpaar!):
+## Beispiele
 
-```markdown
-Dieser Satz hat ebenfalls eine Fußnote[^ref_footnote_1].
-
-[^ref_footnote_1]: Und dieser Text wird unten angezeigt. Er kann darüber hin aus viel länger sein und mehrmals verwendet werden
-```
-
-Beispiel für eine sehr lange Fußnote[^ref_long_footnote].
-
-[^ref_long_footnote]:
-    Wer reitet so spät durch Nacht und Wind?
-
-    Es ist der Vater mit seinem Kind;
-
-    Er hat den Knaben wohn in dem Arm,
-
-    Er faβt ihn sicher, er hält ihn warm.
-
-
-
-### Checklisten
-Extension: [Markdown Checkboxes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-checkbox)
-
-- [ ] Punkt 1
-- [ ] Punkt 2
+- [RTTR](https://github.com/rttrorg/rttr)
+- [Roslyn](https://github.com/dotnet/roslyn)
+- [EF Core](https://github.com/dotnet/efcore)
+- [Git Diagram](https://github.com/ahmedkhaleel2004/gitdiagram?tab=readme-ov-file) (Viele Emojis ;))
 
 # Tools
 
@@ -514,15 +524,31 @@ verwendet werden, oder über die Kommando-Palette (`[Strg]-[Shift]-[P]`)
 
 ### Erweiterungen
 
-Extension: [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
+Empfohlene Plugins für Markdown:
+
+- [Markdown Preview Mermaid Support](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-mermaid)
+- [Markdown Checkboxes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-checkbox)
+- [Markdown Emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
+- [Markdown Footnotes](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-footnotes)
+- [Markdown Preview Github Styling](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles) (Optional)
+
+Funktionieren eher schlecht als recht:
+
+- [Markdown Plantuml Preview](https://marketplace.visualstudio.com/items?itemName=myml.vscode-markdown-plantuml-preview)
+- [Graphviz Markdown Preview](https://marketplace.visualstudio.com/items?itemName=geeklearningio.graphviz-markdown-preview)
+- [Markdown PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf)
 
 ## Joplin
 
 [:link: Joplin Markdown Guide](https://joplinapp.org/help/apps/markdown/)
 
+Joplin ist eine Desktop- und Mobile App, mit der sich Notizen in Markdown verfassen und verwalten lassen. Es ist möglich, persönliche Notizen über Cloudspeicher wie OneDrive, Google Drive und DropBox zu Synchronisieren und zwischen mehreren Geräten zu teilen.
+
+Das Teilen von Notizbüchern mit anderen Leuten ist schwierig, wenn nicht die kostenpflichtige Joplin Cloud verwendet wird (Preise ähnlich hoch wie Confluence).
+
 ## HedgeDoc :hedgehog:
 
-[:link: HedgeDoc](https://hedgedoc.org/) ist ein Server für kollaborative Dokumentation mit Markdown. Es ist ein OpenSource Projekt und muss aktuell selbst gehostet werden.
+[:link: HedgeDoc](https://hedgedoc.org/) ist ein Server für kollaborative Dokumentation mit Markdown. Es ist ein OpenSource Projekt und muss (kann! :heart_eyes:) aktuell selbst gehostet werden.
 
 ## GitHub
 
@@ -640,3 +666,16 @@ C4Container
 ```
 
 ### Structurizr
+
+# Code Dokumentation
+
+## Doxygen
+
+[Doxygen Website](https://www.doxygen.nl/)
+
+## Javadoc
+[How to Write Doc Comments for the Javadoc Tool (Oracle)](https://www.oracle.com/de/technical-resources/articles/java/javadoc-tool.html)
+
+## JSDoc
+
+[JSDoc Reference](https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html)
